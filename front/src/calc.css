@@ -1,6 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,900);
 @import url(http://fonts.googleapis.com/css?family=Anonymous+Pro);
 @import url(http://fonts.googleapis.com/css?family=Exo:300,800);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:300,800);
 
 input[type=range] {
     -webkit-appearance: none;
@@ -16,7 +17,7 @@ input[type=range]::-webkit-slider-runnable-track {
     cursor: pointer;
     animate: 0.2s;
     box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-    background: #3071a9;
+    background: #23abe2;
     border-radius: 1.3px;
     border: 0.2px solid #010101;
 }
@@ -105,7 +106,20 @@ input[type=range]:focus::-ms-fill-upper {
     font-family: 'Exo', sans-serif;
     font-weight: 800;
     font-size: 4rem;
-    color: #529e0e;
+    color: #23abe2;
+    background: transparent;
+    border: none;
+}
+
+.calculated {
+    position: relative;
+    display: inline-block;
+    /*padding-bottom: 5rem;*/
+    text-align: center;
+    font-family: 'Ubuntu Mono', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    color: black;
     background: transparent;
     border: none;
 }
@@ -154,4 +168,42 @@ input[type=range]:focus::-ms-fill-upper {
         -webkit-transform: rotateY(360deg);
         transform: rotateY(360deg);
     }
+}
+
+.note {
+    position: relative;
+    width: 30%;
+    /*padding: 1em 1.5em;*/
+    margin: 2em auto;
+    color: #fff;
+    background: #FAFCFA;
+    overflow: hidden;
+}
+
+.note:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-width: 0 32px 32px 0;
+    border-style: solid;
+    border-color: #fff #fff #23abe2 #23abe2;
+    background: #23abe2;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.3), -1px 1px 1px rgba(0,0,0,0.2);
+    /* Firefox 3.0 damage limitation */
+    display: block; width: 0;
+}
+
+.note.rounded {
+    -moz-border-radius: 5px 0 5px 5px;
+    border-radius: 5px 0 5px 5px;
+}
+
+.note.rounded:before {
+    border-width: 8px;
+    border-color: #fff #fff transparent transparent;
+    -moz-border-radius: 0 0 0 5px;
+    border-radius: 0 0 0 5px;
 }
