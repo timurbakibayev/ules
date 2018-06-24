@@ -5,8 +5,8 @@ import {Slider} from 'reactrangeslider';
 import coin from "./coin.png";
 import logo from './logo.png';
 
-let minRate = 0.523;
-let maxRate = 0.850;
+let minRate = 0.123;
+let maxRate = 2;
 let defaultDays = 30;
 let defaultAmount = 50000;
 
