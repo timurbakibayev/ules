@@ -8,13 +8,6 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <header className="App-header">
-                    <div style={{display: "flex", flexFlow: "row"}}>
-                        <img src={logo} alt="ules"/>
-                        <div className="text-center" style={{flex: 1}}> Равноправное кредитование
-                        </div>
-                    </div>
-                </header>
                 <MultiForm/>
             </div>
         );

@@ -14,32 +14,29 @@ export default class Page2 extends Component {
     constructor() {
         super();
         this.state = {
-            gender: "",
-            birthday: "",
-            identity_card_personal_identification_number: "",
-            identity_card_number: "",
-            identity_card_date_of_issuing: "",
-            identity_card_validity: "",
-            identity_card_issuing_authority: "",
-            identity_card_birthplace: "",
-            city_type: "",
-            city_name: "",
-            region_name: "",
+            gender: localStorage.getItem("gender"),
+            birthday: localStorage.getItem("birthday"),
+            identity_card_personal_identification_number: localStorage.getItem("identity_card_personal_identification_number"),
+            identity_card_number: localStorage.getItem("identity_card_number"),
+            identity_card_date_of_issuing: localStorage.getItem("identity_card_date_of_issuing"),
+            identity_card_validity: localStorage.getItem("identity_card_validity"),
+            identity_card_issuing_authority: localStorage.getItem("identity_card_issuing_authority"),
+            identity_card_birthplace: localStorage.getItem("identity_card_birthplace"),
+            city_type: localStorage.getItem("city_type"),
+            city_name: localStorage.getItem("city_name"),
+            region_name: localStorage.getItem("region_name"),
         }
     }
+
     sendData() {
-        this.props.formHandler(this.state);
+        this.props.formHandler(this.state, true);
+    }
+    sendDataBack() {
+        this.props.formHandler(this.state, false);
     }
     render() {
         return (
             <div>
-                <Progress multi style={{marginBottom: "20px", marginTop: "10px"}}>
-                    <Progress bar value="15" color="success">Калькулятор</Progress>
-                    <Progress bar color="success" max={100} value={30}>Личные данные</Progress>
-                    <Progress bar animated color="info" value="25">Уд.л.</Progress>
-                    {/*<Progress bar color="warning" value="20">20%</Progress>*/}
-                    {/*<Progress bar color="danger" value="5">!!</Progress>*/}
-                </Progress>
                 <Form>
                     <FormGroup row>
                         <Label for="gender" sm={2}>Пол</Label>
@@ -47,7 +44,8 @@ export default class Page2 extends Component {
                             <Input type="select" name="gender" id="gender"
                                    value={this.state.gender}
                                    onChange={(e)=>{
-                                       this.setState({gender: e.target.value})
+                                       this.setState({gender: e.target.value});
+                                       localStorage.setItem("gender", e.target.value);
                                    }}
                             >
                                 <option value={""}></option>
@@ -62,7 +60,8 @@ export default class Page2 extends Component {
                             <Input type="date" name="birthday" id="birthday"
                                    value={this.state.birthday}
                                    onChange={(e)=>{
-                                       this.setState({birthday: e.target.value})
+                                       this.setState({birthday: e.target.value});
+                                       localStorage.setItem("birthday", e.target.value);
                                    }}
                             />
                         </Col>
@@ -74,7 +73,8 @@ export default class Page2 extends Component {
                                    id="identity_card_personal_identification_number" placeholder="ИИН"
                                    value={this.state.identity_card_personal_identification_number}
                                    onChange={(e)=>{
-                                       this.setState({identity_card_personal_identification_number: e.target.value})
+                                       this.setState({identity_card_personal_identification_number: e.target.value});
+                                       localStorage.setItem("identity_card_personal_identification_number", e.target.value);
                                    }}
                             />
                         </Col>
@@ -85,7 +85,8 @@ export default class Page2 extends Component {
                             <Input type="text" name="identity_card_number" id="identity_card_number" placeholder="Номер удостоверения личности"
                                    value={this.state.identity_card_number}
                                    onChange={(e)=>{
-                                       this.setState({identity_card_number: e.target.value})
+                                       this.setState({identity_card_number: e.target.value});
+                                       localStorage.setItem("identity_card_number", e.target.value);
                                    }}
                             />
                         </Col>
@@ -96,7 +97,8 @@ export default class Page2 extends Component {
                             <Input type="date" name="identity_card_date_of_issuing" id="identity_card_date_of_issuing"
                                    value={this.state.identity_card_date_of_issuing}
                                    onChange={(e)=>{
-                                       this.setState({identity_card_date_of_issuing: e.target.value})
+                                       this.setState({identity_card_date_of_issuing: e.target.value});
+                                       localStorage.setItem("identity_card_date_of_issuing", e.target.value);
                                    }}
                             />
                         </Col>
@@ -107,7 +109,8 @@ export default class Page2 extends Component {
                             <Input type="date" name="identity_card_validity" id="identity_card_validity"
                                    value={this.state.identity_card_validity}
                                    onChange={(e)=>{
-                                       this.setState({identity_card_validity: e.target.value})
+                                       this.setState({identity_card_validity: e.target.value});
+                                       localStorage.setItem("identity_card_validity", e.target.value);
                                    }}
                             />
                         </Col>
@@ -118,7 +121,8 @@ export default class Page2 extends Component {
                             <Input type="select" name="identity_card_issuing_authority" id="identity_card_issuing_authority"
                                    value={this.state.identity_card_issuing_authority}
                                    onChange={(e)=>{
-                                       this.setState({identity_card_issuing_authority: e.target.value})
+                                       this.setState({identity_card_issuing_authority: e.target.value});
+                                       localStorage.setItem("identity_card_issuing_authority", e.target.value);
                                    }}
                             >
                                 <option value={""}></option>
@@ -134,7 +138,8 @@ export default class Page2 extends Component {
                             <Input type="text" name="identity_card_birthplace" id="identity_card_birthplace" placeholder="Место рождения"
                                    value={this.state.identity_card_birthplace}
                                    onChange={(e)=>{
-                                       this.setState({identity_card_birthplace: e.target.value})
+                                       this.setState({identity_card_birthplace: e.target.value});
+                                       localStorage.setItem("identity_card_birthplace", e.target.value);
                                    }}
                             />
                         </Col>
@@ -146,7 +151,8 @@ export default class Page2 extends Component {
                             <Input type="text" name="city_type" id="city_type" placeholder="Город"
                                    value={this.state.city_type}
                                    onChange={(e)=>{
-                                       this.setState({city_type: e.target.value})
+                                       this.setState({city_type: e.target.value});
+                                       localStorage.setItem("city_type", e.target.value);
                                    }}
                             />
                         </Col>
@@ -158,7 +164,8 @@ export default class Page2 extends Component {
                             <Input type="text" name="city_name" id="city_name" placeholder=""
                                    value={this.state.city_name}
                                    onChange={(e)=>{
-                                       this.setState({city_name: e.target.value})
+                                       this.setState({city_name: e.target.value});
+                                       localStorage.setItem("city_name", e.target.value);
                                    }}
                             />
                         </Col>
@@ -170,7 +177,8 @@ export default class Page2 extends Component {
                             <Input type="text" name="region_name" id="region_name" placeholder=""
                                    value={this.state.region_name}
                                    onChange={(e)=>{
-                                       this.setState({region_name: e.target.value})
+                                       this.setState({region_name: e.target.value});
+                                       localStorage.setItem("region_name", e.target.value);
                                    }}
                             />
                         </Col>
@@ -181,7 +189,7 @@ export default class Page2 extends Component {
 
                     <FormGroup check row>
                         <Col sm={{size: 10, offset: 2}}>
-                            <Button onClick={this.sendData.bind(this)}>Далее</Button>
+                            <Button onClick={this.sendDataBack.bind(this)}>Назад</Button> <Button onClick={this.sendData.bind(this)}>Далее</Button>
                         </Col>
                     </FormGroup>
                 </Form>

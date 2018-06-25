@@ -13,16 +13,21 @@ let defaultAmount = 50000;
 export default class Calculator extends Component {
     constructor() {
         super();
+        let theAmount = localStorage.getItem("amount")?parseInt(localStorage.getItem("amount"),10):defaultAmount;
+        let theDays = localStorage.getItem("days")?parseInt(localStorage.getItem("days"),10):defaultDays;
         this.state = {
-            amount: defaultAmount,
-            days: defaultDays,
-            totalMin: calcTotal(defaultAmount, defaultDays, minRate),
-            totalMax: calcTotal(defaultAmount, defaultDays, maxRate),
-            toDate: new Date(Date.now() + (defaultDays * 24 * 60 * 60 * 1000)),
+            amount: theAmount,
+            days: theDays,
+            totalMin: calcTotal(theAmount, theDays, minRate),
+            totalMax: calcTotal(theAmount, theDays, maxRate),
+            toDate: new Date(Date.now() + (theDays * 24 * 60 * 60 * 1000)),
         }
     }
 
     daysText(days) {
+        if ((days%100 >= 11) && (days%100 <= 15))
+            return "дней";
+
         let k = days % 10;
         return {
             0: "дней",
@@ -54,12 +59,13 @@ export default class Calculator extends Component {
                                step={5000}
                                value={this.state.amount}
                                 onChange={(e) => {
-                            let amount = e.target.value;
+                            let amount = parseInt(e.target.value,10);
                             this.setState({
                                 amount: amount / 1,
                                 totalMin: calcTotal(amount / 1, this.state.days, minRate),
                                 totalMax: calcTotal(amount / 1, this.state.days, maxRate),
                             });
+                            localStorage.setItem("amount", amount / 1)
                         }}/>
                     </div>
                     <div className="amount">{this.state.amount / 1000} 000 тенге</div>
@@ -75,6 +81,7 @@ export default class Calculator extends Component {
                                 totalMin: calcTotal(this.state.amount, e.target.value, minRate),
                                 totalMax: calcTotal(this.state.amount, e.target.value, maxRate),
                             });
+                            localStorage.setItem("days", e.target.value)
                             this.setState({toDate: new Date(Date.now() + (e.target.value * 24 * 60 * 60 * 1000))});
                         }}/>
                     </div>

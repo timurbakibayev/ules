@@ -2,14 +2,16 @@ import React, {Component} from 'react';
 import {Progress, Form, Label, Input, Button, FormGroup, FormText, Col} from 'reactstrap';
 import Page1 from './Page1';
 import Page2 from './Page2';
+import Page3 from './Page3';
 import Calculator from "./Calculator";
 import {loadBanks} from "./api/banks";
+import logo from './logo.png';
 
 export default class MultiForm extends Component {
     constructor() {
         super();
         this.state = {
-            pageNo: 2,
+            pageNo: 3,
         }
     }
 
@@ -19,16 +21,22 @@ export default class MultiForm extends Component {
         this.setState({pageNo: 1});
     }
 
-    page1Done(thatState) {
+    page1Done(thatState, forward) {
         // this.setState(thatState);
         // console.log("Received", thatState);
-        this.setState({pageNo: 2});
+        this.setState({pageNo: forward?2:0});
     }
 
-    page2Done(thatState) {
+    page2Done(thatState, forward) {
         // this.setState(thatState);
         // console.log("Received", thatState);
-        this.setState({pageNo: 0});
+        this.setState({pageNo: forward?3:1});
+    }
+
+    page3Done(thatState, forward) {
+        // this.setState(thatState);
+        // console.log("Received", thatState);
+        this.setState({pageNo: forward?4:2});
     }
 
     async componentDidMount() {
@@ -39,11 +47,47 @@ export default class MultiForm extends Component {
     render() {
         return (
             <div>
+                <header className="App-header">
+                    <div style={{display: "flex", flexFlow: "row"}}>
+                        <img src={logo} alt="ules"/>
+                        <div className="text-center" style={{flex: 1, display: "flex", flexFlow: "column"}}>
+                            <Progress multi style={{
+                                marginBottom: "0px", marginLeft: "20px", marginRight: "20px", marginTop: "auto",
+                                height: "35px",
+                            }}>
+                                <Progress bar animated={this.state.pageNo === 0}
+                                                                     value={15} color="success">Калькулятор</Progress>
+                                {this.state.pageNo >= 1 && <Progress bar animated={this.state.pageNo === 1}
+                                                                     color="info" max={100}
+                                                                     value={15}>Личные данные</Progress>}
+                                {this.state.pageNo >= 2 && <Progress bar animated={this.state.pageNo === 2}
+                                                                     color="info" max={100}
+                                                                     value={15}>Документы</Progress>}
+                                {this.state.pageNo >= 3 && <Progress bar animated={this.state.pageNo === 3}
+                                                                     color="info" max={100}
+                                                                     value={15}>Адрес</Progress>}
+                                {this.state.pageNo >= 4 && <Progress bar animated={this.state.pageNo === 4}
+                                                                     color="info" max={100}
+                                                                     value={10}>Личные данные</Progress>}
+                                {this.state.pageNo >= 5 && <Progress bar animated={this.state.pageNo === 5}
+                                                                     color="info" max={100}
+                                                                     value={10}>Личные данные</Progress>}
+                                {this.state.pageNo >= 6 && <Progress bar animated={this.state.pageNo === 6}
+                                                                     color="info" max={100}
+                                                                     value={10}>Личные данные</Progress>}
+                                {this.state.pageNo >= 7 && <Progress bar animated={this.state.pageNo === 7}
+                                                                     color="info" max={100}
+                                                                     value={10}>Личные данные</Progress>}
+                            </Progress>
+                        </div>
+                    </div>
+                </header>
                 <div style={{marginLeft: "10%", marginRight: "10%"}}>
                     {/*<div className="text-center">Личная информация</div>*/}
                     {this.state.pageNo === 0 && <Calculator formHandler={this.calculatorDone.bind(this)}/>}
-                    {this.state.pageNo === 1 && <Page1 formHandler={this.page1Done.bind(this)}/>}
+                    {this.state.pageNo === 1 && this.state && <Page1 formHandler={this.page1Done.bind(this)} saved={this.state}/>}
                     {this.state.pageNo === 2 && <Page2 formHandler={this.page2Done.bind(this)}/>}
+                    {this.state.pageNo === 3 && <Page3 formHandler={this.page3Done.bind(this)}/>}
                 </div>
             </div>
         )
