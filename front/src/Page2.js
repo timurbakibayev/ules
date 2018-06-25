@@ -80,54 +80,105 @@ export default class Page2 extends Component {
                         </Col>
                     </FormGroup>
                     <FormGroup row>
-                        <Label for="exampleEmail" sm={2}>Отчество</Label>
+                        <Label for="identity_card_number" sm={2}>Номер уд.л.</Label>
                         <Col sm={10}>
-                            <Input type="text" name="patronymic" id="patronymic" placeholder="Отчество"
-                                   value={this.state.patronymic}
+                            <Input type="text" name="identity_card_number" id="identity_card_number" placeholder="Номер удостоверения личности"
+                                   value={this.state.identity_card_number}
                                    onChange={(e)=>{
-                                       this.setState({patronymic: e.target.value})
+                                       this.setState({identity_card_number: e.target.value})
                                    }}
                             />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
-                        <Label for="exampleEmail" sm={2}>Email</Label>
+                        <Label for="identity_card_date_of_issuing" sm={2}>Дата выдачи</Label>
                         <Col sm={10}>
-                            <Input type="email" name="email" id="exampleEmail" placeholder="email@ules.kz"
-                                   value={this.state.email}
+                            <Input type="date" name="identity_card_date_of_issuing" id="identity_card_date_of_issuing"
+                                   value={this.state.identity_card_date_of_issuing}
                                    onChange={(e)=>{
-                                       this.setState({email: e.target.value})
+                                       this.setState({identity_card_date_of_issuing: e.target.value})
                                    }}
                             />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
-                        <Label for="exampleFile" sm={2}>Уд.л.</Label>
+                        <Label for="identity_card_validity" sm={2}>Срок действия</Label>
                         <Col sm={10}>
-                            <Input type="file" name="identity_card_file_name" id="identity_card_file_name"/>
-                            <FormText color="muted">
-                                Файл с лицевой стороной удостоверения личности
-                            </FormText>
+                            <Input type="date" name="identity_card_validity" id="identity_card_validity"
+                                   value={this.state.identity_card_validity}
+                                   onChange={(e)=>{
+                                       this.setState({identity_card_validity: e.target.value})
+                                   }}
+                            />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
-                        <Label for="exampleFile" sm={2}>Уд.л.</Label>
+                        <Label for="gender" sm={2}>Выдано</Label>
                         <Col sm={10}>
-                            <Input type="file" name="identity_card_back_file_name" id="identity_card_back_file_name"/>
-                            <FormText color="muted">
-                                Файл с обратной стороной удостоверения личности
-                            </FormText>
+                            <Input type="select" name="identity_card_issuing_authority" id="identity_card_issuing_authority"
+                                   value={this.state.identity_card_issuing_authority}
+                                   onChange={(e)=>{
+                                       this.setState({identity_card_issuing_authority: e.target.value})
+                                   }}
+                            >
+                                <option value={""}></option>
+                                <option value={"МЮ РК"}>МЮ РК</option>
+                                <option value={"МИД РК"}>МИД РК</option>
+                            </Input>
                         </Col>
                     </FormGroup>
+
                     <FormGroup row>
-                        <Label for="exampleFile" sm={2}>Фото</Label>
+                        <Label for="identity_card_birthplace" sm={2}>Место рождения</Label>
                         <Col sm={10}>
-                            <Input type="file" name="user_photo_file_name" id="user_photo_file_name"/>
-                            <FormText color="muted">
-                                Файл с Фотографией
-                            </FormText>
+                            <Input type="text" name="identity_card_birthplace" id="identity_card_birthplace" placeholder="Место рождения"
+                                   value={this.state.identity_card_birthplace}
+                                   onChange={(e)=>{
+                                       this.setState({identity_card_birthplace: e.target.value})
+                                   }}
+                            />
                         </Col>
                     </FormGroup>
+
+                    <FormGroup row>
+                        <Label for="city_type" sm={2}>Тип населенного пункта</Label>
+                        <Col sm={10}>
+                            <Input type="text" name="city_type" id="city_type" placeholder="Город"
+                                   value={this.state.city_type}
+                                   onChange={(e)=>{
+                                       this.setState({city_type: e.target.value})
+                                   }}
+                            />
+                        </Col>
+                    </FormGroup>
+
+                    <FormGroup row>
+                        <Label for="city_name" sm={2}>Название населенного пункта</Label>
+                        <Col sm={10}>
+                            <Input type="text" name="city_name" id="city_name" placeholder=""
+                                   value={this.state.city_name}
+                                   onChange={(e)=>{
+                                       this.setState({city_name: e.target.value})
+                                   }}
+                            />
+                        </Col>
+                    </FormGroup>
+
+                    <FormGroup row>
+                        <Label for="region_name" sm={2}>Область</Label>
+                        <Col sm={10}>
+                            <Input type="text" name="region_name" id="region_name" placeholder=""
+                                   value={this.state.region_name}
+                                   onChange={(e)=>{
+                                       this.setState({region_name: e.target.value})
+                                   }}
+                            />
+                        </Col>
+                    </FormGroup>
+
+
+
+
                     <FormGroup check row>
                         <Col sm={{size: 10, offset: 2}}>
                             <Button onClick={this.sendData.bind(this)}>Далее</Button>
