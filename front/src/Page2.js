@@ -10,17 +10,21 @@ import {Progress, Form, Label, Input, Button, FormGroup, FormText, Col} from 're
 // identity_card_file_name,
 // user_photo_file_name
 
-export default class Page1 extends Component {
+export default class Page2 extends Component {
     constructor() {
         super();
         this.state = {
-            name: "",
-            surname: "",
-            email: "",
-            mobile_phone: "",
-            identity_card_back_file_name: "",
-            identity_card_file_name: "",
-            user_photo_file_name: "",
+            gender: "",
+            birthday: "",
+            identity_card_personal_identification_number: "",
+            identity_card_number: "",
+            identity_card_date_of_issuing: "",
+            identity_card_validity: "",
+            identity_card_issuing_authority: "",
+            identity_card_birthplace: "",
+            city_type: "",
+            city_name: "",
+            region_name: "",
         }
     }
     sendData() {
@@ -31,36 +35,52 @@ export default class Page1 extends Component {
             <div>
                 <Progress multi style={{marginBottom: "20px", marginTop: "10px"}}>
                     <Progress bar value="15" color="success">Калькулятор</Progress>
-                    <Progress bar animated color="info" max={100} value={30}>Личные данные</Progress>
-                    {/*<Progress bar color="info" value="25">Cool</Progress>*/}
+                    <Progress bar color="success" max={100} value={30}>Личные данные</Progress>
+                    <Progress bar animated color="info" value="25">Уд.л.</Progress>
                     {/*<Progress bar color="warning" value="20">20%</Progress>*/}
                     {/*<Progress bar color="danger" value="5">!!</Progress>*/}
                 </Progress>
                 <Form>
                     <FormGroup row>
-                        <Label for="surname" sm={2}>Фамилия</Label>
+                        <Label for="gender" sm={2}>Пол</Label>
                         <Col sm={10}>
-                            <Input type="text" name="surname" id="surname" placeholder="Фамилия"
-                                   value={this.state.surname}
+                            <Input type="select" name="gender" id="gender"
+                                   value={this.state.gender}
                                    onChange={(e)=>{
-                                       this.setState({surname: e.target.value})
+                                       this.setState({gender: e.target.value})
+                                   }}
+                            >
+                                <option value={""}></option>
+                                <option value={"Муж"}>Мужской</option>
+                                <option value={"Жен"}>Женский</option>
+                            </Input>
+                        </Col>
+                    </FormGroup>
+                    <FormGroup row>
+                        <Label for="birthday" sm={2}>Дата рождения</Label>
+                        <Col sm={10}>
+                            <Input type="date" name="birthday" id="birthday"
+                                   value={this.state.birthday}
+                                   onChange={(e)=>{
+                                       this.setState({birthday: e.target.value})
                                    }}
                             />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
-                        <Label for="name" sm={2}>Имя</Label>
+                        <Label for="identity_card_personal_identification_number" sm={2}>ИИН</Label>
                         <Col sm={10}>
-                            <Input type="text" name="name" id="name" placeholder="Имя"
-                                   value={this.state.name}
+                            <Input type="text" name="identity_card_personal_identification_number"
+                                   id="identity_card_personal_identification_number" placeholder="ИИН"
+                                   value={this.state.identity_card_personal_identification_number}
                                    onChange={(e)=>{
-                                       this.setState({name: e.target.value})
+                                       this.setState({identity_card_personal_identification_number: e.target.value})
                                    }}
                             />
                         </Col>
                     </FormGroup>
                     <FormGroup row>
-                        <Label for="patronymic" sm={2}>Отчество</Label>
+                        <Label for="exampleEmail" sm={2}>Отчество</Label>
                         <Col sm={10}>
                             <Input type="text" name="patronymic" id="patronymic" placeholder="Отчество"
                                    value={this.state.patronymic}
@@ -71,9 +91,9 @@ export default class Page1 extends Component {
                         </Col>
                     </FormGroup>
                     <FormGroup row>
-                        <Label for="email" sm={2}>Email</Label>
+                        <Label for="exampleEmail" sm={2}>Email</Label>
                         <Col sm={10}>
-                            <Input type="email" name="email" id="email" placeholder="email@ules.kz"
+                            <Input type="email" name="email" id="exampleEmail" placeholder="email@ules.kz"
                                    value={this.state.email}
                                    onChange={(e)=>{
                                        this.setState({email: e.target.value})
@@ -82,7 +102,7 @@ export default class Page1 extends Component {
                         </Col>
                     </FormGroup>
                     <FormGroup row>
-                        <Label for="identity_card_file_name" sm={2}>Уд.л.</Label>
+                        <Label for="exampleFile" sm={2}>Уд.л.</Label>
                         <Col sm={10}>
                             <Input type="file" name="identity_card_file_name" id="identity_card_file_name"/>
                             <FormText color="muted">
@@ -91,7 +111,7 @@ export default class Page1 extends Component {
                         </Col>
                     </FormGroup>
                     <FormGroup row>
-                        <Label for="identity_card_back_file_name" sm={2}>Уд.л.</Label>
+                        <Label for="exampleFile" sm={2}>Уд.л.</Label>
                         <Col sm={10}>
                             <Input type="file" name="identity_card_back_file_name" id="identity_card_back_file_name"/>
                             <FormText color="muted">
@@ -100,7 +120,7 @@ export default class Page1 extends Component {
                         </Col>
                     </FormGroup>
                     <FormGroup row>
-                        <Label for="user_photo_file_name" sm={2}>Фото</Label>
+                        <Label for="exampleFile" sm={2}>Фото</Label>
                         <Col sm={10}>
                             <Input type="file" name="user_photo_file_name" id="user_photo_file_name"/>
                             <FormText color="muted">
