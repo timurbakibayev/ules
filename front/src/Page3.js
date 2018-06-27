@@ -165,14 +165,19 @@ export default class Page2 extends Component {
                     <FormGroup row>
                         <Label for="period_of_residence" sm={2}>Срок проживания</Label>
                         <Col sm={10}>
-                            <Input type="text" name="period_of_residence"
+                            <Input type="select" name="period_of_residence"
                                    id="period_of_residence" placeholder="Срок проживания по данному адресу"
                                    value={this.state.period_of_residence}
                                    onChange={(e)=>{
                                        this.setState({period_of_residence: e.target.value});
                                        localStorage.setItem("period_of_residence", e.target.value);
                                    }}
-                            />
+                            >
+                                <option value="Менее 1 года">Менее 1 года</option>
+                                <option value="От 1 года до 3 лет">От 1 года до 3 лет</option>
+                                <option value="От 3 лет до 5 лет">От 3 лет до 5 лет</option>
+                                <option value="Более 5 лет">Более 5 лет</option>
+                            </Input>
                         </Col>
                     </FormGroup>
 

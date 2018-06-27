@@ -99,16 +99,16 @@ export default class Page1 extends Component {
                         <Col sm={10}>
                             <Input type="file" name="identity_card_file_name" id="identity_card_file_name"/>
                             <FormText color="muted">
-                                Файл с лицевой стороной удостоверения личности
+                                Удостоверение личности
                             </FormText>
                         </Col>
                     </FormGroup>
                     <FormGroup row>
-                        <Label for="identity_card_back_file_name" sm={2}>Уд.л.</Label>
+                        <Label for="identity_card_back_file_name" sm={2}>Обратная сторона</Label>
                         <Col sm={10}>
                             <Input type="file" name="identity_card_back_file_name" id="identity_card_back_file_name"/>
                             <FormText color="muted">
-                                Файл с обратной стороной удостоверения личности
+                                Обратная сторона уд.л.
                             </FormText>
                         </Col>
                     </FormGroup>
