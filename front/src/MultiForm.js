@@ -49,40 +49,53 @@ export default class MultiForm extends Component {
             <div>
                 <header className="App-header">
                     <div style={{display: "flex", flexFlow: "row"}}>
-                        <img src={logo} alt="ules"/>
+                        <img src={logo} alt="ules" onClick={()=>{this.setState({pageNo: 0})}}/>
                         <div className="text-center" style={{flex: 1, display: "flex", flexFlow: "column"}}>
                             <Progress multi style={{
                                 marginBottom: "0px", marginLeft: "20px", marginRight: "20px", marginTop: "auto",
                                 height: "35px",
-                            }}>
+
+                            }} >
                                 <Progress bar animated={this.state.pageNo === 0}
-                                                                     value={15} color="success">Калькулятор</Progress>
+                                                                     value={15} color="success">
+                                    <a href="#" onClick={()=>{this.setState({pageNo: 0})}} style={{color:"white"}}>Калькулятор</a></Progress>
                                 {this.state.pageNo >= 1 && <Progress bar animated={this.state.pageNo === 1}
                                                                      color="info" max={100}
-                                                                     value={15}>Личные данные</Progress>}
-                                {this.state.pageNo >= 2 && <Progress bar animated={this.state.pageNo === 2}
+                                                                     value={15}>
+                                    <a href="#" onClick={()=>{this.setState({pageNo: 1})}} style={{color:"white"}}> Личные данные</a>
+                                </Progress>}
+                                {this.state.pageNo >= 2 && <Progress bar animated={this.state.pageNo === 2}  onClick={()=>{this.setState({pageNo: 2})}}
                                                                      color="info" max={100}
-                                                                     value={15}>Документы</Progress>}
+                                                                     value={15}>
+                                    <a href="#" onClick={()=>{this.setState({pageNo: 2})}} style={{color:"white"}}>Документы</a></Progress>}
                                 {this.state.pageNo >= 3 && <Progress bar animated={this.state.pageNo === 3}
                                                                      color="info" max={100}
-                                                                     value={15}>Адрес</Progress>}
+                                                                     value={15}>
+                                    <a href="#" onClick={()=>{this.setState({pageNo: 3})}} style={{color:"white"}}>Адрес</a></Progress>}
                                 {this.state.pageNo >= 4 && <Progress bar animated={this.state.pageNo === 4}
                                                                      color="info" max={100}
-                                                                     value={10}>Личные данные</Progress>}
+                                                                     value={10}>
+                                    <a href="#" onClick={()=>{this.setState({pageNo: 4})}} style={{color:"white"}}>Личные данные</a></Progress>}
                                 {this.state.pageNo >= 5 && <Progress bar animated={this.state.pageNo === 5}
                                                                      color="info" max={100}
-                                                                     value={10}>Личные данные</Progress>}
+                                                                     value={10}>
+                                    <a href="#" onClick={()=>{this.setState({pageNo: 5})}} style={{color:"white"}}>Личные данные</a>
+                                </Progress>}
                                 {this.state.pageNo >= 6 && <Progress bar animated={this.state.pageNo === 6}
                                                                      color="info" max={100}
-                                                                     value={10}>Личные данные</Progress>}
+                                                                     value={10}>
+                                    <a href="#" onClick={()=>{this.setState({pageNo: 6})}} style={{color:"white"}}>Личные данные</a>
+                                </Progress>}
                                 {this.state.pageNo >= 7 && <Progress bar animated={this.state.pageNo === 7}
                                                                      color="info" max={100}
-                                                                     value={10}>Личные данные</Progress>}
+                                                                     value={10}>
+                                    <a href="#" onClick={()=>{this.setState({pageNo: 7})}} style={{color:"white"}}>Личные данные</a>
+                                </Progress>}
                             </Progress>
                         </div>
                     </div>
                 </header>
-                <div style={{marginLeft: "10%", marginRight: "10%"}}>
+                <div style={{marginLeft: "10%", marginRight: "10%", marginBottom: "30px"}}>
                     {/*<div className="text-center">Личная информация</div>*/}
                     {this.state.pageNo === 0 && <Calculator formHandler={this.calculatorDone.bind(this)}/>}
                     {this.state.pageNo === 1 && this.state && <Page1 formHandler={this.page1Done.bind(this)} saved={this.state}/>}

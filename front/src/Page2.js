@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Progress, Form, Label, Input, Button, FormGroup, FormText, Col} from 'reactstrap';
+import {Progress, Form, Label, CustomInput, Input, Button, FormGroup, FormText, Col} from 'reactstrap';
 
 //name,
 // surname,
@@ -57,7 +57,7 @@ export default class Page2 extends Component {
                     <FormGroup row>
                         <Label for="birthday" sm={2}>Дата рождения</Label>
                         <Col sm={10}>
-                            <Input type="date" name="birthday" id="birthday"
+                            <Input type="date" name="birthday" id="birthday" style={{width: "200px"}}
                                    value={this.state.birthday}
                                    onChange={(e)=>{
                                        this.setState({birthday: e.target.value});
@@ -94,7 +94,7 @@ export default class Page2 extends Component {
                     <FormGroup row>
                         <Label for="identity_card_date_of_issuing" sm={2}>Дата выдачи</Label>
                         <Col sm={10}>
-                            <Input type="date" name="identity_card_date_of_issuing" id="identity_card_date_of_issuing"
+                            <Input type="date" name="identity_card_date_of_issuing" id="identity_card_date_of_issuing" style={{width: "200px"}}
                                    value={this.state.identity_card_date_of_issuing}
                                    onChange={(e)=>{
                                        this.setState({identity_card_date_of_issuing: e.target.value});
@@ -106,7 +106,7 @@ export default class Page2 extends Component {
                     <FormGroup row>
                         <Label for="identity_card_validity" sm={2}>Срок действия</Label>
                         <Col sm={10}>
-                            <Input type="date" name="identity_card_validity" id="identity_card_validity"
+                            <Input type="date" name="identity_card_validity" id="identity_card_validity" style={{width: "200px"}}
                                    value={this.state.identity_card_validity}
                                    onChange={(e)=>{
                                        this.setState({identity_card_validity: e.target.value});
@@ -126,8 +126,8 @@ export default class Page2 extends Component {
                                    }}
                             >
                                 <option value={""}></option>
+                                <option value={"МВД РК"}>МВД РК</option>
                                 <option value={"МЮ РК"}>МЮ РК</option>
-                                <option value={"МИД РК"}>МИД РК</option>
                             </Input>
                         </Col>
                     </FormGroup>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Progress, Form, Label, Input, Button, FormGroup, FormText, Col} from 'reactstrap';
+import {Progress, Form, Label, Input, Button, FormGroup, FormText, Col, CustomInput} from 'reactstrap';
 
 //name,
 // surname,
@@ -97,28 +97,19 @@ export default class Page1 extends Component {
                     <FormGroup row>
                         <Label for="identity_card_file_name" sm={2}>Уд.л.</Label>
                         <Col sm={10}>
-                            <Input type="file" name="identity_card_file_name" id="identity_card_file_name"/>
-                            <FormText color="muted">
-                                Удостоверение личности
-                            </FormText>
+                            <CustomInput type="file" name="identity_card_file_name" id="identity_card_file_name" label="Лицевая сторона удостоверения личности"/>
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label for="identity_card_back_file_name" sm={2}>Обратная сторона</Label>
                         <Col sm={10}>
-                            <Input type="file" name="identity_card_back_file_name" id="identity_card_back_file_name"/>
-                            <FormText color="muted">
-                                Обратная сторона уд.л.
-                            </FormText>
+                            <CustomInput type="file" name="identity_card_back_file_name" id="identity_card_back_file_name" label="Обратная сторона удостоверения личности"/>
                         </Col>
                     </FormGroup>
                     <FormGroup row>
                         <Label for="user_photo_file_name" sm={2}>Фото</Label>
                         <Col sm={10}>
-                            <Input type="file" name="user_photo_file_name" id="user_photo_file_name"/>
-                            <FormText color="muted">
-                                Файл с Фотографией
-                            </FormText>
+                            <CustomInput type="file" name="user_photo_file_name" id="user_photo_file_name" label="Актуальная фотография"/>
                         </Col>
                     </FormGroup>
                     <FormGroup check row>
