@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Progress, Form, Label, Row, Input, Button, FormGroup, FormText, Col} from 'reactstrap';
 
-export default class Page2 extends Component {
+export default class Page3 extends Component {
     constructor() {
         super();
         this.state = {
@@ -10,25 +10,23 @@ export default class Page2 extends Component {
             registration: localStorage.getItem("registration"),
             country: localStorage.getItem("country"),
             postcode: localStorage.getItem("postcode"),
-            region_name: localStorage.getItem("region_name"),
-            city_name: localStorage.getItem("city_name"),
+            region_name1: localStorage.getItem("region_name1"),
+            city_name1: localStorage.getItem("city_name1"),
             street: localStorage.getItem("street"),
             building_number: localStorage.getItem("building_number"),
             apartment_number: localStorage.getItem("apartment_number"),
             period_of_residence: localStorage.getItem("period_of_residence"),
-            same_address: localStorage.getItem("same_address"),
+            same_address: localStorage.getItem("same_address")==='true',
 
             country_: localStorage.getItem("country_"),
             postcode_: localStorage.getItem("postcode_"),
-            region_name_: localStorage.getItem("region_name_"),
-            city_name_: localStorage.getItem("city_name_"),
+            region_name1_: localStorage.getItem("region_name1_"),
+            city_name1_: localStorage.getItem("city_name1_"),
             street_: localStorage.getItem("street_"),
             building_number_: localStorage.getItem("building_number_"),
             apartment_number_: localStorage.getItem("apartment_number_"),
             period_of_residence_: localStorage.getItem("period_of_residence_"),
-
-
-        }
+        };
     }
 
     sendData() {
@@ -203,7 +201,7 @@ export default class Page2 extends Component {
                             <FormGroup check>
                                 <Label check>
                                     <Input type="checkbox" name="same_address" id="same_address"
-                                           checked={this.state.same_address1}
+                                           checked={this.state.same_address}
                                            onChange={(e) => {
                                                console.log("Checkbox", e.target.checked);
                                                this.setState({same_address: e.target.checked});
@@ -214,7 +212,7 @@ export default class Page2 extends Component {
                             </FormGroup>
                         </Col>
                     </FormGroup>
-                    <div>
+                    {!this.state.same_address && (<div>
                         <Row>
                             <Col xs="6" sm="6">
 
@@ -272,7 +270,6 @@ export default class Page2 extends Component {
                                         />
                                     </Col>
                                 </FormGroup>
-
                             </Col>
                             <Col xs="6" sm="6">
                                 <FormGroup row>
@@ -336,7 +333,7 @@ export default class Page2 extends Component {
                                 </FormGroup>
                             </Col>
                         </Row>
-                    </div>
+                    </div>)}
 
                     <FormGroup check row>
                         <Col sm={{size: 6, offset: 2}}>
