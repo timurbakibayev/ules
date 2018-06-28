@@ -4,6 +4,8 @@ import Page1 from './Page1';
 import Page2 from './Page2';
 import Page3 from './Page3';
 import Page4 from './Page4';
+import Page5 from './Page5';
+import PageSend from './PageSend';
 import Calculator from "./Calculator";
 import {loadBanks} from "./api/banks";
 import logo from './logo.png';
@@ -12,7 +14,7 @@ export default class MultiForm extends Component {
     constructor() {
         super();
         this.state = {
-            pageNo: 3,
+            pageNo: 6,
         }
     }
 
@@ -44,6 +46,18 @@ export default class MultiForm extends Component {
         // this.setState(thatState);
         // console.log("Received", thatState);
         this.setState({pageNo: forward?5:3});
+    }
+
+    page5Done(thatState, forward) {
+        // this.setState(thatState);
+        // console.log("Received", thatState);
+        this.setState({pageNo: forward?6:4});
+    }
+
+    pageSend(thatState, forward) {
+        // this.setState(thatState);
+        // console.log("Received", thatState);
+        this.setState({pageNo: 5});
     }
 
     async componentDidMount() {
@@ -86,17 +100,12 @@ export default class MultiForm extends Component {
                                 {this.state.pageNo >= 5 && <Progress bar animated={this.state.pageNo === 5}
                                                                      color="info" max={100}
                                                                      value={10}>
-                                    <a href="#" onClick={()=>{this.setState({pageNo: 5})}} style={{color:"white"}}>Личные данные</a>
+                                    <a href="#" onClick={()=>{this.setState({pageNo: 5})}} style={{color:"white"}}>Занятость</a>
                                 </Progress>}
                                 {this.state.pageNo >= 6 && <Progress bar animated={this.state.pageNo === 6}
                                                                      color="info" max={100}
-                                                                     value={10}>
-                                    <a href="#" onClick={()=>{this.setState({pageNo: 6})}} style={{color:"white"}}>Личные данные</a>
-                                </Progress>}
-                                {this.state.pageNo >= 7 && <Progress bar animated={this.state.pageNo === 7}
-                                                                     color="info" max={100}
-                                                                     value={10}>
-                                    <a href="#" onClick={()=>{this.setState({pageNo: 7})}} style={{color:"white"}}>Личные данные</a>
+                                                                     value={20}>
+                                    <a href="#" onClick={()=>{this.setState({pageNo: 6})}} style={{color:"white"}}>Подача заявления</a>
                                 </Progress>}
                             </Progress>
                         </div>
@@ -109,6 +118,8 @@ export default class MultiForm extends Component {
                     {this.state.pageNo === 2 && <Page2 formHandler={this.page2Done.bind(this)}/>}
                     {this.state.pageNo === 3 && <Page3 formHandler={this.page3Done.bind(this)}/>}
                     {this.state.pageNo === 4 && <Page4 formHandler={this.page4Done.bind(this)}/>}
+                    {this.state.pageNo === 5 && <Page5 formHandler={this.page5Done.bind(this)}/>}
+                    {this.state.pageNo === 6 && <PageSend formHandler={this.pageSend.bind(this)}/>}
                 </div>
             </div>
         )
