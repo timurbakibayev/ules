@@ -8,7 +8,7 @@ import LandingPage from './LandingPage';
 class App extends Component {
     constructor() {
         super();
-        this.state={showForm: false, startPage: 0};
+        this.state={showForm: false, startPage: 6};
     }
     switcher() {
         this.setState({showForm: true})
