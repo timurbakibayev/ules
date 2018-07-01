@@ -7,6 +7,7 @@
     "react": "^16.4.1",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.1",
+    "react-motion": "^0.5.2",
     "react-multistep": "^3.2.1",
     "react-scripts": "1.1.4",
     "reactrangeslider": "^3.0.6",

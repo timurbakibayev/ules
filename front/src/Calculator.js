@@ -44,7 +44,7 @@ export default class Calculator extends Component {
     }
 
     continue() {
-        this.props.formHandler(this.state);
+        this.props.formHandler(this.state, true);
     }
 
     render() {
