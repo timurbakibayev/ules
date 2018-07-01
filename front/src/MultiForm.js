@@ -15,9 +15,10 @@ export default class MultiForm extends Component {
     constructor() {
         super();
         this.state = {
-            pageNo: 0,
+            pageNo: 6,
             fromX: -1000,
             toX: 0,
+            banks: [],
         }
     }
 
@@ -45,13 +46,14 @@ export default class MultiForm extends Component {
                 toX: 0,
             });
             this.setState({});
-        }, 800);
+        }, 500);
 
     }
 
 
     async componentDidMount() {
         let t = await loadBanks();
+        this.setState({banks: t});
         console.log(t);
     }
 
@@ -67,7 +69,6 @@ export default class MultiForm extends Component {
                             <Progress multi style={{
                                 marginBottom: "0px", marginLeft: "20px", marginRight: "20px", marginTop: "auto",
                                 height: "35px",
-
                             }}>
                                 <Progress bar animated={this.state.pageNo === 0}
                                           value={15} color="success">
@@ -79,7 +80,7 @@ export default class MultiForm extends Component {
                                                                      value={15}>
                                     <a href="#" onClick={() => {
                                         this.setState({pageNo: 1})
-                                    }} style={{color: "white"}}>Личные данные</a>
+                                    }} style={{color: "white"}}>Начало</a>
                                 </Progress>}
                                 {this.state.pageNo >= 2 &&
                                 <Progress bar animated={this.state.pageNo === 2} onClick={() => {
@@ -89,25 +90,25 @@ export default class MultiForm extends Component {
                                           value={15}>
                                     <a href="#" onClick={() => {
                                         this.setState({pageNo: 2})
-                                    }} style={{color: "white"}}>Документы</a></Progress>}
+                                    }} style={{color: "white"}}>Паспортные данные</a></Progress>}
                                 {this.state.pageNo >= 3 && <Progress bar animated={this.state.pageNo === 3}
                                                                      color="info" max={100}
                                                                      value={15}>
                                     <a href="#" onClick={() => {
                                         this.setState({pageNo: 3})
-                                    }} style={{color: "white"}}>Адрес</a></Progress>}
+                                    }} style={{color: "white"}}>Контакты</a></Progress>}
                                 {this.state.pageNo >= 4 && <Progress bar animated={this.state.pageNo === 4}
                                                                      color="info" max={100}
                                                                      value={10}>
                                     <a href="#" onClick={() => {
                                         this.setState({pageNo: 4})
-                                    }} style={{color: "white"}}>Контакты</a></Progress>}
+                                    }} style={{color: "white"}}>Бизнес</a></Progress>}
                                 {this.state.pageNo >= 5 && <Progress bar animated={this.state.pageNo === 5}
                                                                      color="info" max={100}
                                                                      value={10}>
                                     <a href="#" onClick={() => {
                                         this.setState({pageNo: 5})
-                                    }} style={{color: "white"}}>Занятость</a>
+                                    }} style={{color: "white"}}>Адрес</a>
                                 </Progress>}
                                 {this.state.pageNo >= 6 && <Progress bar animated={this.state.pageNo === 6}
                                                                      color="info" max={100}
@@ -124,20 +125,23 @@ export default class MultiForm extends Component {
                     {({x}) =>
                         <div style={{
                             zoom: 0.8,
+                            marginTop: "20px",
+                            marginBottom: "20px",
                             marginLeft: "10%",
                             marginRight: "10%",
-                            marginBottom: "30px",
                             WebkitTransform: `translate3d(${x}px, 0, 0)`,
                             transform: `translate3d(${x}px, 0, 0)`,
                             boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)",
                             padding: "20px",
+                            borderRadius: "15px",
+                            backgroundColor: "white",
                         }}>
                             {/*<div className="text-center">Личная информация</div>*/}
                             {this.state.pageNo === 0 && <Calculator formHandler={this.pageDone.bind(this)}/>}
                             {this.state.pageNo === 1 && <Page1 formHandler={this.pageDone.bind(this)}/>}
                             {this.state.pageNo === 2 && <Page2 formHandler={this.pageDone.bind(this)}/>}
                             {this.state.pageNo === 3 && <Page3 formHandler={this.pageDone.bind(this)}/>}
-                            {this.state.pageNo === 4 && <Page4 formHandler={this.pageDone.bind(this)}/>}
+                            {this.state.pageNo === 4 && <Page4 formHandler={this.pageDone.bind(this)} banks={this.state.banks}/>}
                             {this.state.pageNo === 5 && <Page5 formHandler={this.pageDone.bind(this)}/>}
                             {this.state.pageNo === 6 && <PageSend formHandler={this.pageDone.bind(this)}/>}
                         </div>

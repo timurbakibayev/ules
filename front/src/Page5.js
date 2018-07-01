@@ -1,29 +1,32 @@
 import React, {Component} from 'react';
-import {Progress, Form, Label, Input, Button, Row, FormGroup, FormText, Col, CustomInput} from 'reactstrap';
-
+import {Progress, Form, Label, Row, Input, Button, FormGroup, FormText, Col} from 'reactstrap';
 
 export default class Page5 extends Component {
     constructor() {
         super();
         this.state = {
-            busyness_employment_type: localStorage.getItem("busyness_employment_type"),
-            busyness_type_of_income: localStorage.getItem("busyness_type_of_income"),
-            busyness_workplace_name: localStorage.getItem("busyness_workplace_name"),
-            busyness_workplace_phone: localStorage.getItem("busyness_workplace_phone"),
-            busyness_identification_number: localStorage.getItem("busyness_identification_number"),
-            busyness_duration_of_employment: localStorage.getItem("busyness_duration_of_employment"),
-            busyness_work_experience: localStorage.getItem("busyness_work_experience"),
-            busyness_industry_employment: localStorage.getItem("busyness_industry_employment"),
+            home_phone: localStorage.getItem("home_phone"),
+            work_phone: localStorage.getItem("work_phone"),
+            registration: localStorage.getItem("registration"),
+            country: localStorage.getItem("country"),
+            postcode: localStorage.getItem("postcode"),
+            region_name1: localStorage.getItem("region_name1"),
+            city_name1: localStorage.getItem("city_name1"),
+            street: localStorage.getItem("street"),
+            building_number: localStorage.getItem("building_number"),
+            apartment_number: localStorage.getItem("apartment_number"),
+            period_of_residence: localStorage.getItem("period_of_residence"),
+            same_address: localStorage.getItem("same_address")==='true',
 
-            busyness_position: localStorage.getItem("busyness_position"),
-            busyness_income_per_month: localStorage.getItem("busyness_income_per_month"),
-            busyness_regularity_of_income: localStorage.getItem("busyness_regularity_of_income"),
-            busyness_income_expected_date: localStorage.getItem("busyness_income_expected_date"),
-            busyness_income_amount_last_month: localStorage.getItem("busyness_income_amount_last_month"),
-            busyness_income_amount_last_six_month: localStorage.getItem("busyness_income_amount_last_six_month"),
-            real_estate_owned: localStorage.getItem("real_estate_owned") === 'true',
-            car_owned: localStorage.getItem("car_owned") === 'true',
-        }
+            country_: localStorage.getItem("country_"),
+            postcode_: localStorage.getItem("postcode_"),
+            region_name1_: localStorage.getItem("region_name1_"),
+            city_name1_: localStorage.getItem("city_name1_"),
+            street_: localStorage.getItem("street_"),
+            building_number_: localStorage.getItem("building_number_"),
+            apartment_number_: localStorage.getItem("apartment_number_"),
+            period_of_residence_: localStorage.getItem("period_of_residence_"),
+        };
     }
 
     sendData() {
@@ -38,141 +41,128 @@ export default class Page5 extends Component {
         return (
             <div>
                 <Form>
-
+                    <FormText style={{margin: "10px"}}>Адрес регистрации бизнеса</FormText>
                     <Row>
                         <Col xs="6" sm="6">
-
                             <FormGroup row>
-                                <Label for="busyness_employment_type" sm={2}>Тип занятости</Label>
+                                <Label for="country" sm={2}>Страна</Label>
                                 <Col sm={10}>
-                                    <Input type="select" name="busyness_employment_type"
-                                           id="busyness_employment_type" placeholder="Тип занятости"
-                                           value={this.state.busyness_employment_type}
+                                    <Input type="text" name="country"
+                                           id="country" placeholder="Страна"
+                                           value={this.state.country}
                                            onChange={(e) => {
-                                               this.setState({busyness_employment_type: e.target.value});
-                                               localStorage.setItem("busyness_employment_type", e.target.value);
-                                           }}
-                                    >
-                                        <option value="Постоянная занятость">Постоянная занятость</option>
-                                        <option value="Частичная занятость">Частичная занятость</option>
-                                        <option value="Проектная / временная работа">Проектная / временная работа
-                                        </option>
-                                        <option value="Собственный бизнес">Собственный бизнес</option>
-                                        <option value="Индивидуальный предприниматель">Индивидуальный предприниматель
-                                        </option>
-                                        <option value="Стажировка">Стажировка</option>
-                                        <option value="Не работаю">Не работаю</option>
-                                    </Input>
-                                </Col>
-                            </FormGroup>
-
-                            <FormGroup row>
-                                <Label for="busyness_type_of_income" sm={2}>Вид дохода</Label>
-                                <Col sm={10}>
-                                    <Input type="select" name="busyness_type_of_income"
-                                           id="busyness_type_of_income" placeholder="Вид дохода"
-                                           value={this.state.busyness_type_of_income}
-                                           onChange={(e) => {
-                                               this.setState({busyness_type_of_income: e.target.value});
-                                               localStorage.setItem("busyness_type_of_income", e.target.value);
-                                           }}
-                                    >
-                                        <option value="Доход по основному месту работы">Доход по основному месту
-                                            работы
-                                        </option>
-                                        <option value="Доход от работы по совместительству">Доход от работы по
-                                            совместительству
-                                        </option>
-                                        <option value="Индивидуальная деятельность">Индивидуальная деятельность</option>
-                                        <option value="Доход супруга">Доход супруга</option>
-                                        <option value="Сдача недвижимости в аренду">Сдача недвижимости в аренду</option>
-                                        <option value="Помощь родственников">Помощь родственников</option>
-                                        <option value="Другое">Другое</option>
-                                    </Input>
-                                </Col>
-                            </FormGroup>
-
-                            <FormGroup row>
-                                <Label for="busyness_workplace_name" sm={2}>Название организации</Label>
-                                <Col sm={10}>
-                                    <Input type="text" name="busyness_workplace_name" id="busyness_workplace_name"
-                                           placeholder="Название организации"
-                                           value={this.state.busyness_workplace_name}
-                                           onChange={(e) => {
-                                               this.setState({busyness_workplace_name: e.target.value});
-                                               localStorage.setItem("busyness_workplace_name", e.target.value);
+                                               this.setState({country: e.target.value});
+                                               localStorage.setItem("country", e.target.value);
                                            }}
                                     />
                                 </Col>
                             </FormGroup>
 
                             <FormGroup row>
-                                <Label for="busyness_workplace_phone" sm={2}>Телефон организации</Label>
+                                <Label for="postcode" sm={2}>Индекс</Label>
                                 <Col sm={10}>
-                                    <Input type="text" name="busyness_workplace_phone" id="busyness_workplace_phone"
-                                           placeholder="Телефон организации"
-                                           value={this.state.busyness_workplace_phone}
+                                    <Input type="text" name="postcode"
+                                           id="postcode" placeholder="Индекс"
+                                           value={this.state.postcode}
                                            onChange={(e) => {
-                                               this.setState({busyness_workplace_phone: e.target.value});
-                                               localStorage.setItem("busyness_workplace_phone", e.target.value);
+                                               this.setState({postcode: e.target.value});
+                                               localStorage.setItem("postcode", e.target.value);
                                            }}
                                     />
                                 </Col>
                             </FormGroup>
 
                             <FormGroup row>
-                                <Label for="busyness_identification_number" sm={2}>БИН</Label>
+                                <Label for="region_name1" sm={2}>Область</Label>
                                 <Col sm={10}>
-                                    <Input type="text" name="busyness_identification_number"
-                                           id="busyness_identification_number" placeholder="БИН"
-                                           value={this.state.busyness_identification_number}
+                                    <Input type="text" name="region_name1"
+                                           id="region_name1" placeholder="Область"
+                                           value={this.state.region_name1}
                                            onChange={(e) => {
-                                               this.setState({busyness_identification_number: e.target.value});
-                                               localStorage.setItem("busyness_identification_number", e.target.value);
+                                               this.setState({region_name1: e.target.value});
+                                               localStorage.setItem("region_name1", e.target.value);
                                            }}
                                     />
                                 </Col>
                             </FormGroup>
-
-
                             <FormGroup row>
-                                <Label for="busyness_duration_of_employment" sm={2}>Время работы на последнем месте</Label>
+                                <Label for="city_name1" sm={2}>Город</Label>
                                 <Col sm={10}>
-                                    <Input type="select" name="busyness_duration_of_employment"
-                                           id="busyness_duration_of_employment" placeholder="Вид дохода"
-                                           value={this.state.busyness_duration_of_employment}
+                                    <Input type="text" name="city_name1"
+                                           id="city_name1" placeholder="Город"
+                                           value={this.state.city_name1}
                                            onChange={(e) => {
-                                               this.setState({busyness_duration_of_employment: e.target.value});
-                                               localStorage.setItem("busyness_duration_of_employment", e.target.value);
+                                               this.setState({city_name1: e.target.value});
+                                               localStorage.setItem("city_name1", e.target.value);
                                            }}
-                                    >
-                                        <option value=""></option>
-                                        <option value="Нет опыта">Нет опыта</option>
-                                        <option value="От 1 до 6 месяцев">От 1 до 6 месяцев</option>
-                                        <option value="От 6 месяцев до 1 года">От 6 месяцев до 1 года</option>
-                                        <option value="От 1 года до 2 лет">От 1 года до 2 лет</option>
-                                        <option value="От 2 до 3 лет">От 2 до 3 лет</option>
-                                        <option value="От 3 до 4 лет">От 3 до 4 лет</option>
-                                        <option value="Более 4 лет">Более 4 лет</option>
-                                    </Input>
+                                    />
                                 </Col>
                             </FormGroup>
-
-                            {/*busyness_work_experience: localStorage.getItem("busyness_work_experience"),*/}
-                            {/*busyness_industry_employment: localStorage.getItem("busyness_industry_employment"),*/}
-
 
                         </Col>
+                        <Col xs="6" sm="6">
+                            <FormGroup row>
+                                <Label for="street" sm={3}>Улица</Label>
+                                <Col sm={9}>
+                                    <Input type="text" name="street"
+                                           id="street" placeholder="Улица"
+                                           value={this.state.street}
+                                           onChange={(e) => {
+                                               this.setState({street: e.target.value});
+                                               localStorage.setItem("street", e.target.value);
+                                           }}
+                                    />
+                                </Col>
+                            </FormGroup>
+
+                            <FormGroup row>
+                                <Label for="building_number" sm={3}>Дом</Label>
+                                <Col sm={9}>
+                                    <Input type="text" name="building_number"
+                                           id="building_number" placeholder="Номер дома"
+                                           value={this.state.building_number}
+                                           onChange={(e) => {
+                                               this.setState({building_number: e.target.value});
+                                               localStorage.setItem("building_number", e.target.value);
+                                           }}
+                                    />
+                                </Col>
+                            </FormGroup>
+
+                            <FormGroup row>
+                                <Label for="apartment_number" sm={3}>Квартира</Label>
+                                <Col sm={9}>
+                                    <Input type="text" name="apartment_number"
+                                           id="apartment_number" placeholder="Номер квартиры"
+                                           value={this.state.apartment_number}
+                                           onChange={(e) => {
+                                               this.setState({apartment_number: e.target.value});
+                                               localStorage.setItem("apartment_number", e.target.value);
+                                           }}
+                                    />
+                                </Col>
+                            </FormGroup>
+                            <FormGroup row>
+                                <Label for="home_phone" sm={3}>Домашний телефон</Label>
+                                <Col sm={9}>
+                                    <Input type="text" name="home_phone"
+                                           id="home_phone" placeholder="+7727ххххххх"
+                                           value={this.state.home_phone}
+                                           onChange={(e) => {
+                                               this.setState({home_phone: e.target.value});
+                                               localStorage.setItem("home_phone", e.target.value);
+                                           }}
+                                    />
+                                </Col>
+                            </FormGroup>
+                        </Col>
                     </Row>
-
-
                     <FormGroup check row>
-                        <Col sm={{size: 6, offset: 2}}>
+                        <Col sm={{size: 12}}>
                             <Button onClick={this.sendDataBack.bind(this)}>Назад</Button> <Button
                             onClick={this.sendData.bind(this)}>Далее</Button>
                         </Col>
                     </FormGroup>
-
                 </Form>
             </div>
         )

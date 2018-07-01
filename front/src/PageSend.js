@@ -26,12 +26,10 @@ export default class PageSend extends Component {
         return (
             <div>
                 <Form>
-
                     <Row>
 
                     </Row>
-
-                        <Col sm={{size: 6, offset: 2}}>
+                        <Col sm={{size: 12}}>
                             {this.state.sending && <img src={creditCard} />}
                             {!this.state.sending && <Button onClick={this.submit.bind(this)}>Отправить</Button>}
                             {this.state.sending && <p>Ваша заявка обрабатывается. Пожалуйста, подождите...</p>}

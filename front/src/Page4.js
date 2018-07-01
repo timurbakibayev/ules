@@ -1,38 +1,37 @@
 import React, {Component} from 'react';
 import {Progress, Form, Label, Input, Button, Row, FormGroup, FormText, Col, CustomInput} from 'reactstrap';
 
-//name,
-// surname,
-// patronymic,
-// email,
-// mobile_phone,
-// identity_card_back_file_name,
-// identity_card_file_name,
-// user_photo_file_name
 
 export default class Page4 extends Component {
     constructor() {
         super();
         this.state = {
-            c1name: localStorage.getItem("c1name"),
-            c1surname: localStorage.getItem("c1surname"),
-            c1patronymic: localStorage.getItem("c1patronymic"),
-            c1city_name: localStorage.getItem("c1city_name"),
-            c1degree_of_relationship: localStorage.getItem("c1degree_of_relationship"),
-            c1mobile_phone: localStorage.getItem("c1mobile_phone"),
-            c1work_phone: localStorage.getItem("c1work_phone"),
-            c1home_phone: localStorage.getItem("c1home_phone"),
-            c1personal_identification_number: localStorage.getItem("c1personal_identification_number"),
+            bank_statement_6m: localStorage.getItem("bank_statement_6m"),
+            bank_name: localStorage.getItem("bank_name"),
+            bank_account_no: localStorage.getItem("bank_account_no"),
+            amount_indebtedness: localStorage.getItem("amount_indebtedness"),
+            have_indebtedness: localStorage.getItem("have_indebtedness") === 'true',
+            have_bank_account: localStorage.getItem("have_bank_account") === 'true',
+            loan_purpose: localStorage.getItem("loan_purpose"),
+            busyness_num_of_employees: localStorage.getItem("busyness_num_of_employees"),
+            busyness_daily_income: localStorage.getItem("busyness_daily_income"),
+            busyness_employment_type: localStorage.getItem("busyness_employment_type"),
+            busyness_type_of_income: localStorage.getItem("busyness_type_of_income"),
+            busyness_workplace_name: localStorage.getItem("busyness_workplace_name"),
+            busyness_workplace_phone: localStorage.getItem("busyness_workplace_phone"),
+            busyness_identification_number: localStorage.getItem("busyness_identification_number"),
+            busyness_duration_of_employment: localStorage.getItem("busyness_duration_of_employment"),
+            busyness_work_experience: localStorage.getItem("busyness_work_experience"),
+            busyness_industry_employment: localStorage.getItem("busyness_industry_employment"),
 
-            c2name: localStorage.getItem("c2name"),
-            c2surname: localStorage.getItem("c2surname"),
-            c2patronymic: localStorage.getItem("c2patronymic"),
-            c2city_name: localStorage.getItem("c2city_name"),
-            c2degree_of_relationship: localStorage.getItem("c2degree_of_relationship"),
-            c2mobile_phone: localStorage.getItem("c2mobile_phone"),
-            c2work_phone: localStorage.getItem("c2work_phone"),
-            c2home_phone: localStorage.getItem("c2home_phone"),
-            c2personal_identification_number: localStorage.getItem("c2personal_identification_number"),
+            busyness_position: localStorage.getItem("busyness_position"),
+            busyness_income_per_month: localStorage.getItem("busyness_income_per_month"),
+            busyness_regularity_of_income: localStorage.getItem("busyness_regularity_of_income"),
+            busyness_income_expected_date: localStorage.getItem("busyness_income_expected_date"),
+            busyness_income_amount_last_month: localStorage.getItem("busyness_income_amount_last_month"),
+            busyness_income_amount_last_six_month: localStorage.getItem("busyness_income_amount_last_six_month"),
+            real_estate_owned: localStorage.getItem("real_estate_owned") === 'true',
+            car_owned: localStorage.getItem("car_owned") === 'true',
 
         }
     }
@@ -49,263 +48,263 @@ export default class Page4 extends Component {
         return (
             <div>
                 <Form>
-
                     <Row>
                         <Col xs="6" sm="6">
 
-                            <FormText style={{margin: "10px"}}>Контактное лицо 1</FormText>
-                            <FormGroup row>
-                                <Label for="c1surname" sm={2}>Фамилия</Label>
-                                <Col sm={10}>
-                                    <Input type="text" name="c1surname" id="c1surname" placeholder="Фамилия"
-                                           value={this.state.c1surname}
-                                           onChange={(e) => {
-                                               this.setState({c1surname: e.target.value});
-                                               localStorage.setItem("c1surname", e.target.value);
-                                           }}
-                                    />
-                                </Col>
+                            <FormGroup>
+                                <Label for="busyness_workplace_name">Название организации</Label>
+                                <Input type="text" name="busyness_workplace_name" id="busyness_workplace_name"
+                                       placeholder="Название организации"
+                                       value={this.state.busyness_workplace_name}
+                                       onChange={(e) => {
+                                           this.setState({busyness_workplace_name: e.target.value});
+                                           localStorage.setItem("busyness_workplace_name", e.target.value);
+                                       }}
+                                />
                             </FormGroup>
-                            <FormGroup row>
-                                <Label for="c1name" sm={2}>Имя</Label>
-                                <Col sm={10}>
-                                    <Input type="text" name="c1name" id="c1name" placeholder="Имя"
-                                           value={this.state.c1name}
-                                           onChange={(e) => {
-                                               this.setState({c1name: e.target.value});
-                                               localStorage.setItem("c1name", e.target.value);
-                                           }}
-                                    />
-                                </Col>
+                            <FormGroup>
+                                <Label for="busyness_employment_type">Сфера деятельности</Label>
+
+                                <Input type="select" name="busyness_employment_type"
+                                       id="busyness_employment_type" placeholder="Тип занятости"
+                                       value={this.state.busyness_employment_type}
+                                       onChange={(e) => {
+                                           this.setState({busyness_employment_type: e.target.value});
+                                           localStorage.setItem("busyness_employment_type", e.target.value);
+                                       }}
+                                >
+                                    <option value="">Выберите значение...</option>
+                                    <option value="Сельское, лесное и рыбное хозяйство">
+                                        Сельское, лесное и рыбное хозяйство
+                                    </option>
+                                    <option value="Горнодобывающая промышленность и разработка карьеров">
+                                        Горнодобывающая промышленность и разработка карьеров
+                                    </option>
+                                    <option value="Обрабатывающая промышленность">
+                                        Обрабатывающая промышленность
+                                    </option>
+                                    <option value="Электроснабжение, подача газа и коммунальные услуги">
+                                        Электроснабжение, подача газа и коммунальные услуги
+                                    </option>
+                                    <option value="Строительство и ремонт">
+                                        Строительство и ремонт
+                                    </option>
+                                    <option value="Оптовая и розничная торговля">
+                                        Оптовая и розничная торговля
+                                    </option>
+                                    <option value="Транспорт и складирование">
+                                        Транспорт и складирование
+                                    </option>
+                                    <option value="Услуги по проживанию и питанию">
+                                        Услуги по проживанию и питанию
+                                    </option>
+                                    <option value="Информация и связь">
+                                        Информация и связь
+                                    </option>
+                                    <option value="Финансовая деятельность">
+                                        Финансовая деятельность
+                                    </option>
+                                    <option value="Операции с недвижимым имуществом">
+                                        Операции с недвижимым имуществом
+                                    </option>
+                                    <option value="Деятельность в области административного обслуживания">
+                                        Деятельность в области административного обслуживания
+                                    </option>
+                                    <option value="Образование">
+                                        Образование
+                                    </option>
+                                    <option value="Здравоохранение и социальные услуги">
+                                        Здравоохранение и социальные услуги
+                                    </option>
+                                    <option value="Развлечения и отдых">
+                                        Развлечения и отдых
+                                    </option>
+                                    <option value="Предоставление прочих видов услуг">
+                                        Предоставление прочих видов услуг
+                                    </option>
+                                </Input>
+
                             </FormGroup>
-                            <FormGroup row>
-                                <Label for="c1patronymic" sm={2}>Отчество</Label>
-                                <Col sm={10}>
-                                    <Input type="text" name="c1patronymic" id="c1patronymic" placeholder="Отчество"
-                                           value={this.state.c1patronymic}
-                                           onChange={(e) => {
-                                               this.setState({c1patronymic: e.target.value});
-                                               localStorage.setItem("c1patronymic", e.target.value);
-                                           }}
-                                    />
-                                </Col>
+
+                            <FormGroup>
+                                <Label for="busyness_type_of_income">ОКЭД</Label>
+                                <Input type="text" name="busyness_type_of_income"
+                                       id="busyness_type_of_income" placeholder="ОКЭД"
+                                       value={this.state.busyness_type_of_income}
+                                       onChange={(e) => {
+                                           this.setState({busyness_type_of_income: e.target.value});
+                                           localStorage.setItem("busyness_type_of_income", e.target.value);
+                                       }}
+                                >
+                                </Input>
                             </FormGroup>
-                            <FormGroup row>
-                                <Label for="c1degree_of_relationship" sm={2}>Степень отношения</Label>
-                                <Col sm={10}>
-                                    <Input type="select" name="c1degree_of_relationship"
-                                           id="c1degree_of_relationship" placeholder="Степень отношения"
-                                           value={this.state.c1degree_of_relationship}
-                                           onChange={(e) => {
-                                               this.setState({c1degree_of_relationship: e.target.value});
-                                               localStorage.setItem("c1degree_of_relationship", e.target.value);
-                                           }}
-                                    >
-                                        <option value="Родитель" selected="selected">Родитель</option>
-                                        <option value="Брат/сестра">Брат/сестра</option>
-                                        <option value="Родственник">Родственник</option>
-                                        <option value="Супруг/супруга">Супруг/супруга</option>
-                                        <option value="Сын/дочь">Сын/дочь</option>
-                                        <option value="Коллега">Коллега</option>
-                                        <option value="Друзья">Друзья</option>
-                                    </Input>
-                                </Col>
+
+
+                            <FormGroup>
+                                <Label for="busyness_num_of_employees">Кол-во сотрудников</Label>
+                                <Input type="select" name="busyness_num_of_employees"
+                                       id="busyness_num_of_employees"
+                                       value={this.state.busyness_num_of_employees}
+                                       onChange={(e) => {
+                                           this.setState({busyness_num_of_employees: e.target.value});
+                                           localStorage.setItem("busyness_num_of_employees", e.target.value);
+                                       }}
+                                >
+                                    <option value="">Выберите значение...</option>
+                                    <option value="1">
+                                        1 сотрудник
+                                    </option>
+                                    <option value="до 5">
+                                        до 5 сотрудников
+                                    </option>
+                                    <option value="6-10">
+                                        6-10 сотрудников
+                                    </option>
+                                    <option value="11-50">
+                                        11-50 сотрудников
+                                    </option>
+                                    <option value="50-100">
+                                        50-100 сотрудников
+                                    </option>
+                                    <option value="100-500">
+                                        100-500 сотрудников
+                                    </option>
+                                    <option value="больше 500">
+                                        больше 500 сотрудников
+                                    </option>
+                                </Input>
                             </FormGroup>
-                            <FormGroup row>
-                                <Label for="c1city_name" sm={2}>Населённый пункт</Label>
-                                <Col sm={10}>
-                                    <Input type="text" name="c1city_name" id="c1city_name"
-                                           placeholder="Населённый пункт"
-                                           value={this.state.c1city_name}
-                                           onChange={(e) => {
-                                               this.setState({c1city_name: e.target.value});
-                                               localStorage.setItem("c1city_name", e.target.value);
-                                           }}
-                                    />
-                                </Col>
+
+
+                            <FormGroup>
+                                <Label for="busyness_daily_income">Ежедневная выручка</Label>
+                                <Input type="text" name="busyness_daily_income" id="busyness_daily_income"
+                                       placeholder="Ежедневная выручка"
+                                       value={this.state.busyness_daily_income}
+                                       onChange={(e) => {
+                                           this.setState({busyness_daily_income: e.target.value});
+                                           localStorage.setItem("busyness_daily_income", e.target.value);
+                                       }}
+                                />
                             </FormGroup>
-                            <FormGroup row>
-                                <Label for="c1mobile_phone" sm={2}>Мобильный телефон</Label>
-                                <Col sm={10}>
-                                    <Input type="text" name="c1mobile_phone" id="c1mobile_phone"
-                                           placeholder="+77021112233"
-                                           value={this.state.c1mobile_phone}
-                                           onChange={(e) => {
-                                               this.setState({c1mobile_phone: e.target.value});
-                                               localStorage.setItem("c1mobile_phone", e.target.value);
-                                           }}
-                                    />
-                                </Col>
+
+                            <FormGroup>
+                                <Label for="busyness_workplace_phone">Рабочий номер</Label>
+                                <Input type="text" name="busyness_workplace_phone" id="busyness_workplace_phone"
+                                       placeholder="Рабочий номер"
+                                       value={this.state.busyness_workplace_phone}
+                                       onChange={(e) => {
+                                           this.setState({busyness_workplace_phone: e.target.value});
+                                           localStorage.setItem("busyness_workplace_phone", e.target.value);
+                                       }}
+                                />
                             </FormGroup>
-                            <FormGroup row>
-                                <Label for="c1home_phone" sm={2}>Домашний телефон</Label>
-                                <Col sm={10}>
-                                    <Input type="text" name="c1home_phone" id="c1home_phone" placeholder="+7727......"
-                                           value={this.state.c1home_phone}
-                                           onChange={(e) => {
-                                               this.setState({c1home_phone: e.target.value});
-                                               localStorage.setItem("c1home_phone", e.target.value);
-                                           }}
-                                    />
-                                </Col>
-                            </FormGroup>
-                            <FormGroup row>
-                                <Label for="c1work_phone" sm={2}>Рабочий телефон</Label>
-                                <Col sm={10}>
-                                    <Input type="text" name="c1work_phone" id="c1work_phone" placeholder="+7727......."
-                                           value={this.state.c1work_phone}
-                                           onChange={(e) => {
-                                               this.setState({c1work_phone: e.target.value});
-                                               localStorage.setItem("c1work_phone", e.target.value);
-                                           }}
-                                    />
-                                </Col>
-                            </FormGroup>
-                            <FormGroup row>
-                                <Label for="c1personal_identification_number" sm={2}>ИИН</Label>
-                                <Col sm={10}>
-                                    <Input type="text" name="c1personal_identification_number"
-                                           id="c1personal_identification_number"
-                                           placeholder="+7727......."
-                                           value={this.state.c1personal_identification_number}
-                                           onChange={(e) => {
-                                               this.setState({c1personal_identification_number: e.target.value});
-                                               localStorage.setItem("c1personal_identification_number", e.target.value);
-                                           }}
-                                    />
-                                </Col>
-                            </FormGroup>
+
                         </Col>
                         <Col xs="6" sm="6">
-                            <FormText style={{margin: "10px"}}>Контактное лицо 2</FormText>
-                            <FormGroup row>
-                                <Label for="c2surname" sm={2}>Фамилия</Label>
-                                <Col sm={10}>
-                                    <Input type="text" name="c2surname" id="c2surname" placeholder="Фамилия"
-                                           value={this.state.c2surname}
-                                           onChange={(e) => {
-                                               this.setState({c2surname: e.target.value});
-                                               localStorage.setItem("c2surname", e.target.value);
-                                           }}
-                                    />
-                                </Col>
+                            <FormGroup>
+                                <Label for="loan_purpose">Цель получения займа</Label>
+                                <Input type="text" name="loan_purpose"
+                                       id="loan_purpose" placeholder="Цель получения займа"
+                                       value={this.state.loan_purpose}
+                                       onChange={(e) => {
+                                           this.setState({loan_purpose: e.target.value});
+                                           localStorage.setItem("loan_purpose", e.target.value);
+                                       }}
+                                >
+                                </Input>
                             </FormGroup>
-                            <FormGroup row>
-                                <Label for="c2name" sm={2}>Имя</Label>
-                                <Col sm={10}>
-                                    <Input type="text" name="c2name" id="c2name" placeholder="Имя"
-                                           value={this.state.c2name}
-                                           onChange={(e) => {
-                                               this.setState({c2name: e.target.value});
-                                               localStorage.setItem("c2name", e.target.value);
-                                           }}
-                                    />
-                                </Col>
+
+                            <FormGroup>
+                                <FormGroup check>
+                                    <Label check style={{marginBottom: ".5rem"}}>
+                                        <Input type="checkbox" name="have_indebtedness" id="same_address"
+                                               checked={this.state.have_indebtedness}
+                                               onChange={(e) => {
+                                                   this.setState({have_indebtedness: e.target.checked});
+                                                   localStorage.setItem("have_indebtedness", e.target.checked);
+                                               }}
+
+                                        />Имеется задолженность перед поставщиками
+                                    </Label>
+                                </FormGroup>
+                                {this.state.have_indebtedness && (<Input type="text" name="amount_indebtedness"
+                                                                         id="loan_purpose"
+                                                                         placeholder="Сумма задолженности"
+                                                                         value={this.state.amount_indebtedness}
+                                                                         onChange={(e) => {
+                                                                             this.setState({amount_indebtedness: e.target.value});
+                                                                             localStorage.setItem("amount_indebtedness", e.target.value);
+                                                                         }}
+                                >
+                                </Input>)}
                             </FormGroup>
-                            <FormGroup row>
-                                <Label for="c2patronymic" sm={2}>Отчество</Label>
-                                <Col sm={10}>
-                                    <Input type="text" name="c2patronymic" id="c2patronymic" placeholder="Отчество"
-                                           value={this.state.c2patronymic}
+
+                            <FormGroup>
+                                <FormGroup check>
+                                    <Label check style={{marginBottom: ".5rem"}}>
+                                        <Input type="checkbox" name="have_bank_account" id="same_address"
+                                               checked={this.state.have_bank_account}
+                                               onChange={(e) => {
+                                                   this.setState({have_bank_account: e.target.checked});
+                                                   localStorage.setItem("have_bank_account", e.target.checked);
+                                               }}
+
+                                        />Имеется лицевой счёт в банке
+                                    </Label>
+                                </FormGroup>
+                                {this.state.have_bank_account && (<FormGroup>
+                                    <Label for="bank_account_no">Номер счёта</Label>
+                                    <Input type="text" name="bank_account_no"
+                                           id="bank_account_no" placeholder="Номер счёта"
+                                           value={this.state.bank_account_no}
                                            onChange={(e) => {
-                                               this.setState({c2patronymic: e.target.value});
-                                               localStorage.setItem("c2patronymic", e.target.value);
-                                           }}
-                                    />
-                                </Col>
-                            </FormGroup>
-                            <FormGroup row>
-                                <Label for="c2degree_of_relationship" sm={2}>Степень отношения</Label>
-                                <Col sm={10}>
-                                    <Input type="select" name="c2degree_of_relationship"
-                                           id="c2degree_of_relationship" placeholder="Степень отношения"
-                                           value={this.state.c2degree_of_relationship}
-                                           onChange={(e) => {
-                                               this.setState({c2degree_of_relationship: e.target.value});
-                                               localStorage.setItem("c2degree_of_relationship", e.target.value);
+                                               this.setState({bank_account_no: e.target.value});
+                                               localStorage.setItem("bank_account_no", e.target.value);
                                            }}
                                     >
-                                        <option value="Родитель" selected="selected">Родитель</option>
-                                        <option value="Брат/сестра">Брат/сестра</option>
-                                        <option value="Родственник">Родственник</option>
-                                        <option value="Супруг/супруга">Супруг/супруга</option>
-                                        <option value="Сын/дочь">Сын/дочь</option>
-                                        <option value="Коллега">Коллега</option>
-                                        <option value="Друзья">Друзья</option>
                                     </Input>
-                                </Col>
-                            </FormGroup>
-                            <FormGroup row>
-                                <Label for="c2city_name" sm={2}>Населённый пункт</Label>
-                                <Col sm={10}>
-                                    <Input type="text" name="c2city_name" id="c2city_name"
-                                           placeholder="Населённый пункт"
-                                           value={this.state.c2city_name}
+                                </FormGroup>)}
+                                {this.state.have_bank_account && (<FormGroup>
+                                    <Label for="bank_name">Обслуживающий банк</Label>
+                                    <Input type="select" name="bank_name"
+                                           id="bank_name"
+                                           value={this.state.bank_name}
                                            onChange={(e) => {
-                                               this.setState({c2city_name: e.target.value});
-                                               localStorage.setItem("c2city_name", e.target.value);
+                                               this.setState({bank_name: e.target.value});
+                                               localStorage.setItem("bank_name", e.target.value);
                                            }}
-                                    />
-                                </Col>
-                            </FormGroup>
-                            <FormGroup row>
-                                <Label for="c2mobile_phone" sm={2}>Мобильный телефон</Label>
-                                <Col sm={10}>
-                                    <Input type="text" name="c2mobile_phone" id="c2mobile_phone"
-                                           placeholder="+77021112233"
-                                           value={this.state.c2mobile_phone}
-                                           onChange={(e) => {
-                                               this.setState({c2mobile_phone: e.target.value});
-                                               localStorage.setItem("c2mobile_phone", e.target.value);
-                                           }}
-                                    />
-                                </Col>
-                            </FormGroup>
-                            <FormGroup row>
-                                <Label for="c2home_phone" sm={2}>Домашний телефон</Label>
-                                <Col sm={10}>
-                                    <Input type="text" name="c2home_phone" id="c2home_phone" placeholder="+7727......"
-                                           value={this.state.c2home_phone}
-                                           onChange={(e) => {
-                                               this.setState({c2home_phone: e.target.value});
-                                               localStorage.setItem("c2home_phone", e.target.value);
-                                           }}
-                                    />
-                                </Col>
-                            </FormGroup>
-                            <FormGroup row>
-                                <Label for="c2work_phone" sm={2}>Рабочий телефон</Label>
-                                <Col sm={10}>
-                                    <Input type="text" name="c2work_phone" id="c2work_phone" placeholder="+7727......."
-                                           value={this.state.c2work_phone}
-                                           onChange={(e) => {
-                                               this.setState({c2work_phone: e.target.value});
-                                               localStorage.setItem("c2work_phone", e.target.value);
-                                           }}
-                                    />
-                                </Col>
-                            </FormGroup>
-                            <FormGroup row>
-                                <Label for="c2personal_identification_number" sm={2}>ИИН</Label>
-                                <Col sm={10}>
-                                    <Input type="text" name="c2personal_identification_number"
-                                           id="c2personal_identification_number"
-                                           placeholder="+7727......."
-                                           value={this.state.c2personal_identification_number}
-                                           onChange={(e) => {
-                                               this.setState({c2personal_identification_number: e.target.value});
-                                               localStorage.setItem("c2personal_identification_number", e.target.value);
-                                           }}
-                                    />
-                                </Col>
-                            </FormGroup>
+                                    >
+                                        <option value="">Выберите банк...</option>
+                                        {this.props.banks.map((e) => <option key={e.value}
+                                                                             value={e.value}>{e.label}</option>)}
+                                    </Input>
+                                </FormGroup>)}
 
+                                {this.state.have_bank_account && (
+                                    <FormGroup>
+                                            <CustomInput type="file" name="bank_statement_6m"
+                                                         id="bank_statement_6m"
+                                                         label={this.state.bank_statement_6m?this.state.bank_statement_6m:"Загрузить выписку со счета за последние 6 мес."}
+                                                         onChange={(e)=>{
+                                                             console.log("selecting file");
+                                                             let files = e.target.files,
+                                                                 value = e.target.value,
+                                                                 message;
+                                                             console.log(files[0]);
+                                                             this.setState({
+                                                                 bank_statement_6m: files[0].name,
+                                                             });
+                                                             localStorage.setItem("bank_statement_6m", files[0].name);
+                                                         }}
+                                            />
+                                    </FormGroup>
+                                )}
+                            </FormGroup>
                         </Col>
                     </Row>
-
-
                     <FormGroup check row>
-                        <Col sm={{size: 6, offset: 2}}>
+                        <Col sm={{size: 12}}>
                             <Button onClick={this.sendDataBack.bind(this)}>Назад</Button> <Button
                             onClick={this.sendData.bind(this)}>Далее</Button>
                         </Col>
