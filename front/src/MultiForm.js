@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Progress, Form, Label, Input, Button, FormGroup, FormText, Col} from 'reactstrap';
+import {Progress, Form, Label, Input, Button, Navbar, Row, Col, ButtonToolbar} from 'reactstrap';
 import Page1 from './Page1';
 import Page2 from './Page2';
 import Page3 from './Page3';
@@ -10,12 +10,12 @@ import Calculator from "./Calculator";
 import {loadBanks} from "./api/banks";
 import logo from './logo.png';
 import {Motion, spring} from 'react-motion';
+import './landingPage.css';
 
 export default class MultiForm extends Component {
     constructor() {
         super();
         this.state = {
-            pageNo: 6,
             fromX: -1000,
             toX: 0,
             banks: [],
@@ -36,13 +36,13 @@ export default class MultiForm extends Component {
     pageDone(thatState, forward) {
         this.setState({
             fromX: 0,
-            toX: forward?-1500:1500,
+            toX: forward ? -1500 : 1500,
         });
-        setTimeout(()=> {
+        setTimeout(() => {
             console.log("timed out");
             this.setState({
-                pageNo: forward ? this.state.pageNo+1 : this.state.pageNo-1,
-                fromX: forward?1500:-1500,
+                pageNo: forward ? this.state.pageNo + 1 : this.state.pageNo - 1,
+                fromX: forward ? 1500 : -1500,
                 toX: 0,
             });
             this.setState({});
@@ -52,6 +52,7 @@ export default class MultiForm extends Component {
 
 
     async componentDidMount() {
+        this.setState({pageNo: this.props.startPage});
         let t = await loadBanks();
         this.setState({banks: t});
         console.log(t);
@@ -121,7 +122,8 @@ export default class MultiForm extends Component {
                         </div>
                     </div>
                 </header>
-                <Motion defaultStyle={{x: this.state.fromX}} style={{x: spring(this.state.toX)}} key={this.state.pageNo}>
+                <Motion defaultStyle={{x: this.state.fromX}} style={{x: spring(this.state.toX)}}
+                        key={this.state.pageNo}>
                     {({x}) =>
                         <div style={{
                             zoom: 0.8,
@@ -141,7 +143,8 @@ export default class MultiForm extends Component {
                             {this.state.pageNo === 1 && <Page1 formHandler={this.pageDone.bind(this)}/>}
                             {this.state.pageNo === 2 && <Page2 formHandler={this.pageDone.bind(this)}/>}
                             {this.state.pageNo === 3 && <Page3 formHandler={this.pageDone.bind(this)}/>}
-                            {this.state.pageNo === 4 && <Page4 formHandler={this.pageDone.bind(this)} banks={this.state.banks}/>}
+                            {this.state.pageNo === 4 &&
+                            <Page4 formHandler={this.pageDone.bind(this)} banks={this.state.banks}/>}
                             {this.state.pageNo === 5 && <Page5 formHandler={this.pageDone.bind(this)}/>}
                             {this.state.pageNo === 6 && <PageSend formHandler={this.pageDone.bind(this)}/>}
                         </div>

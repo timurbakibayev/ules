@@ -31,7 +31,12 @@ export default class PageSend extends Component {
                     </Row>
                         <Col sm={{size: 12}}>
                             {this.state.sending && <img src={creditCard} />}
-                            {!this.state.sending && <Button onClick={this.submit.bind(this)}>Отправить</Button>}
+                            {!this.state.sending && (
+                                <div>
+                                    Мы готовы принять Вашу заявку!
+                                </div>
+                            )}
+                            {!this.state.sending && <Button onClick={this.submit.bind(this)}>Отправить на рассмотрение</Button>}
                             {this.state.sending && <p>Ваша заявка обрабатывается. Пожалуйста, подождите...</p>}
                             {this.state.sending && <Progress value={this.state.progress}></Progress>}
                         </Col>
